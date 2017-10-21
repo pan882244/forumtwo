@@ -1,15 +1,20 @@
 package controller;
 
+import allservice.NewsService;
 import allservice.UsersService;
 import com.opensymphony.xwork2.ActionSupport;
+import entity.NewsEntity;
 import entity.UsersEntity;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class UserLoginAction extends ActionSupport {
 
     UsersService usersService = new UsersService();
+    NewsService newsService = new NewsService();
 
     @Override
     public String execute() {
@@ -30,9 +35,14 @@ public class UserLoginAction extends ActionSupport {
             return "error";
         }
 
-        request.setAttribute("user",user);
+        //将用户设置到作用域
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("user",user);
+
+        List<NewsEntity> list = newsService.queryNews();
+        request.setAttribute("list",list);
+
+
         return SUCCESS;
-
-
     }
 }

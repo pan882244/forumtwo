@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.UUID;
 
 public class NewsDao {
     EntityManagerFactory factory = JPAUtil.getFactory();
@@ -14,7 +15,7 @@ public class NewsDao {
 
     //查询全部留言
     public List<NewsEntity> queryNews() {
-        String hql = "select n from NewsEntity n";
+        String hql = "select n from NewsEntity n order by n.genTime desc";
         Query q = manager.createQuery(hql,NewsEntity.class);
         List<NewsEntity> list = q.getResultList();
         manager.close();
@@ -40,7 +41,8 @@ public class NewsDao {
 
         //定义对象
         NewsEntity newsEntity = new NewsEntity();
-        newsEntity.setId(ne.getId());
+        String uuId = UUID.randomUUID().toString();
+        newsEntity.setId(uuId);
         newsEntity.setLoginuserHead(ne.getLoginuserHead());
         newsEntity.setUsersByAuthorId(ne.getUsersByAuthorId());
         newsEntity.setUserAccount(ne.getUserAccount());
