@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="forum-dao" />
+        <module name="forum-entity" />
+        <module name="forum-service" />
+        <module name="forum-util" />
+        <module name="forum-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="forum-dao" target="1.8" />
+      <module name="forum-entity" target="1.8" />
+      <module name="forum-service" target="1.8" />
+      <module name="forum-util" target="1.8" />
+      <module name="forum-web" target="1.8" />
+      <module name="forumtwo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
