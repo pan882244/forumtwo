@@ -73,7 +73,6 @@ public class NewsDao {
         q.setParameter("content",ne.getContent());
 
         q.executeUpdate();
-
         manager.getTransaction().commit();
         manager.close();
     }
