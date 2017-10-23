@@ -1,11 +1,15 @@
 package allDao;
 
 import entity.NewsEntity;
+import entity.Page;
 import util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,18 +22,18 @@ public class NewsDao {
         String hql = "select n from NewsEntity n order by n.genTime desc";
         Query q = manager.createQuery(hql,NewsEntity.class);
         List<NewsEntity> list = q.getResultList();
-        manager.close();
+
         return list;
     }
 
     //分页查询留言
-    public List<NewsEntity> queryPageNews(int maxResults,int firstResult) {
-        String hql = "select n from NewsEntity n";
+    public List<NewsEntity> queryPageNews(int currentPage, int pageCount) {
+        String hql = "select n from NewsEntity n order by n.genTime desc";
         Query q = manager.createQuery(hql,NewsEntity.class);
         //设置每页显示多少个，设置多大结果。
-        q.setMaxResults(maxResults);
+        q.setMaxResults(pageCount);
         //设置起点
-        q.setFirstResult(firstResult);
+        q.setFirstResult((currentPage-1)*pageCount);
         List<NewsEntity> list = q.getResultList();
         manager.close();
         return list;
@@ -48,7 +52,13 @@ public class NewsDao {
         newsEntity.setUserAccount(ne.getUserAccount());
         newsEntity.setTitle(ne.getTitle());
         newsEntity.setContent(ne.getContent());
-        newsEntity.setGenTime(ne.getGenTime());
+
+        Date date = new Date();
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = dateFormat.format(date);
+        ts = Timestamp.valueOf(strDate);
+        newsEntity.setGenTime(ts);
 
         manager.persist(newsEntity);
 

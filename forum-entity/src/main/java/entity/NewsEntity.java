@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
@@ -12,7 +13,7 @@ public class NewsEntity {
     private String userAccount;
     private String title;
     private String content;
-    private Date genTime;
+    private Timestamp genTime;
     private UsersEntity usersByAuthorId;
     private Collection<ReplayEntity> replaysById;
 
@@ -68,11 +69,11 @@ public class NewsEntity {
 
     @Basic
     @Column(name = "gen_time", nullable = true)
-    public Date getGenTime() {
+    public Timestamp getGenTime() {
         return genTime;
     }
 
-    public void setGenTime(Date genTime) {
+    public void setGenTime(Timestamp genTime) {
         this.genTime = genTime;
     }
 

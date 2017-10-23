@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "administrator", schema = "dbo", catalog = "forum")
@@ -11,7 +8,7 @@ public class AdministratorEntity {
     private String account;
     private String password;
 
-    @Basic
+    @Id
     @Column(name = "account", nullable = false, length = 10)
     public String getAccount() {
         return account;

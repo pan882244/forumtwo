@@ -22,7 +22,7 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api &ndash;&gt;
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
@@ -34,7 +34,7 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-junit-plugin</artifactId>
             <version>2.5.12</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
     <build>

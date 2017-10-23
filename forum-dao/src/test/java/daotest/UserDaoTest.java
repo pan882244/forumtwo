@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class UserDaoTest {
     UsersDao usersDao = new UsersDao();
-    @Test
+    /*@Test
     public void zhuce() {
         UsersEntity usersEntity = new UsersEntity();
         usersEntity.setAccount("qbb");
@@ -22,5 +22,5 @@ public class UserDaoTest {
         UsersEntity list = usersDao.login("zss","123");
 
         System.out.println(list.getAccount());
-    }
+    }*/
 }
