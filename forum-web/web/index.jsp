@@ -21,50 +21,77 @@
     <script src="js/jquery-1.12.4.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="js/index.js" ></script>
+
+    <style>
+      .row {
+        border:1px solid red;
+      }
+
+      #header-photo {
+        width:100%;
+        height:120px;
+        background-image:url(./images/img01.jpg);
+      }
+    </style>
   </head>
   <body>
-  <table border="1" align="center" width="80%" class="table" id="newsliebiao">
-    <tr>
-      <td colspan="5" style="font-size:50px;text-align:center;height:100px">首页</td>
-    </tr>
-    <tr>
-      <td colspan="5" align="right">
-        <a href="sendMessage.jsp">发留言</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12" id="header-photo"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9"></div>
+      <div class="col-md-1"><a href="sendMessage.jsp">发留言</a></div>
+      <div class="col-md-2">
         <c:if test="${empty sessionScope.user}">
           <a href='login.html'>登录</a>
         </c:if>
-
-
         <a href="personal.jsp">${sessionScope.user.account }</a>
         <a href="UserInfoLogout">退出系统</a>
-      </td>
-    </tr>
-    <tr>
-      <th>编号</th>
-      <th>标题</th>
-      <th>作者</th>
-      <th>内容</th>
-      <th>发帖时间</th>
-    </tr>
+      </div>
+    </div>
 
-    <c:forEach var="m" items="${requestScope.list.data }" varStatus="vs">
-      <tr align="center">
-        <td>${vs.count }</td>
-        <td>
-          <a href="#">${m.title }</a>
-        </td>
-        <td>${m.userAccount }</td>
-        <%--<td>
-            ${m.content}
-        </td>--%>
-        <td>
-          <fmt:formatDate value="${m.genTime }" pattern="yyyy-MM-dd hh:mm:ss"/>
-        </td>
-      </tr>
-    </c:forEach>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <table border="1" align="center" width="80%" class="table" id="newsliebiao">
+
+          <%--<tr>
+            <td colspan="5" align="right">
+            </td>
+          </tr>--%>
+          <tr>
+            <th>编号</th>
+            <th>标题</th>
+            <th>作者</th>
+            <%--<th>内容</th>--%>
+            <th>发帖时间</th>
+          </tr>
+
+          <c:forEach var="m" items="${requestScope.list.data }" varStatus="vs">
+            <tr align="center">
+              <td>${vs.count }</td>
+              <td>
+                <a href="#">${m.title }</a>
+              </td>
+              <td>${m.userAccount }</td>
+                <%--<td>
+                    ${m.content}
+                </td>--%>
+              <td>
+                <fmt:formatDate value="${m.genTime }" pattern="yyyy-MM-dd hh:mm:ss"/>
+              </td>
+            </tr>
+          </c:forEach>
 
 
-  </table>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
   <div id="pager" style="margin-left:30%;">
     <ul class="pagination">
 

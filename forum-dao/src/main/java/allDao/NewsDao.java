@@ -2,13 +2,16 @@ package allDao;
 
 import entity.NewsEntity;
 import entity.Page;
+import entity.UsersEntity;
 import util.JPAUtil;
+import util.PagerUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -27,16 +30,48 @@ public class NewsDao {
     }
 
     //分页查询留言
-    public List<NewsEntity> queryPageNews(int currentPage, int pageCount) {
+    public PagerUtil<NewsEntity> queryPageNews(int currentPage, int pageCount) {
+        PagerUtil<NewsEntity> pagerUtil = new  PagerUtil<NewsEntity>() ;
         String hql = "select n from NewsEntity n order by n.genTime desc";
         Query q = manager.createQuery(hql,NewsEntity.class);
+        //总记录数
+        int cout = q.getResultList().size();
+        //System.out.println("总记录数"+cout);
         //设置每页显示多少个，设置多大结果。
         q.setMaxResults(pageCount);
         //设置起点
         q.setFirstResult((currentPage-1)*pageCount);
         List<NewsEntity> list = q.getResultList();
+
+        //处理懒加载
+        List<NewsEntity> list1 = new ArrayList<NewsEntity>();
+        for(NewsEntity ne : list ) {
+            NewsEntity newsEntity = new NewsEntity();
+            UsersEntity usersEntity = new UsersEntity();
+
+            newsEntity.setId(ne.getId());
+            newsEntity.setContent(ne.getContent());
+            newsEntity.setTitle(ne.getTitle());
+            newsEntity.setGenTime(ne.getGenTime());
+            newsEntity.setUserAccount(ne.getUserAccount());
+            newsEntity.setLoginuserHead(ne.getLoginuserHead());
+            /*usersEntity.setId(usersEntity.getId());
+            newsEntity.setUsersByAuthorId(usersEntity);*/
+
+            list1.add(newsEntity);
+        }
+
+        pagerUtil.setTotalRecords(cout);
+        //2.设置每页显示的记录数
+        pagerUtil.setPageCount(pageCount) ;
+
+        //3.设置当前页
+        pagerUtil.setCurrentPage(currentPage) ;
+
+
+        pagerUtil.setData(list1) ;
         manager.close();
-        return list;
+        return pagerUtil;
     }
 
     //添加留言

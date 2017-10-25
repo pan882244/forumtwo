@@ -6,6 +6,8 @@ import entity.UsersEntity;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserRegisterAction extends ActionSupport {
     @Override
@@ -21,6 +23,18 @@ public class UserRegisterAction extends ActionSupport {
 
         //设置实体对象数据
         usersEntity.setAccount(account);
+
+        //邮箱正则规则
+        String regEx = "/^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w{2,3}){1,3})$/";
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(email);
+        boolean m = matcher.matches();
+        System.out.println("邮箱："+m);
+
+        if(m=false) {
+            return "error";
+        }
+
         usersEntity.setPassword(password);
         usersEntity.setEmail(email);
 

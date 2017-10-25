@@ -25,6 +25,9 @@
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.0" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-c3p0:5.2.10.Final" />
+          <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
+          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
           <element id="archive" name="forum-util-1.0-SNAPSHOT.jar">
             <element id="module-output" name="forum-util" />
           </element>
@@ -40,6 +43,7 @@
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-json-plugin:2.5.5" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.0" />
           <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-junit-plugin:2.5.12" />

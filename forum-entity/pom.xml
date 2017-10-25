@@ -17,5 +17,16 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.10.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.2.10.Final</version>
+        </dependency>
     </dependencies>
 </project>

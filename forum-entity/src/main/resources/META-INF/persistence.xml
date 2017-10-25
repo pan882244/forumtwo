@@ -19,7 +19,6 @@
     <class>entity.NewsEntity</class>
     <class>entity.AdministratorEntity</class>
     <class>entity.ReplayEntity</class>
-    <class>entity.GuanliyuanEntity</class>
 
     <properties>
         <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
@@ -28,6 +27,15 @@
         <property name="javax.persistence.jdbc.password" value="8822446" />
         <property name="hibernate.connection.url" value="jdbc:sqlserver://localhost\.:1433;database=forum"/>
         <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+
+        <!--连接池的使用-->
+        <property name="hibernate.c3p0.min_size" value="1"/>
+        <property name="hibernate.c3p0.max_size" value="20"/>
+        <property name="hibernate.c3p0.timeout" value="5000"/>
+        <property name="hibernate.c3p0.max_statements" value="100"/>
+        <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+        <property name="hibernate.c3p0.acquire_increment" value="2"/>
+        <property name="hibernate.c3p0.validate" value="true"/>
 
         <!--<property name="hibernate.show_sql" value="true" />
         <property name="hibernate.format_sql" value="true"/>-->

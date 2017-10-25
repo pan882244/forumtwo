@@ -3,8 +3,10 @@ package allservice;
 import allDao.NewsDao;
 import entity.NewsEntity;
 import entity.Page;
+import entity.UsersEntity;
 import util.PagerUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,7 +21,7 @@ public class NewsService {
 
     //分页查询留言
     public PagerUtil<NewsEntity> queryPageNews(int currentPage, int pageCount) {
-        PagerUtil<NewsEntity> pagerUtil = new  PagerUtil<NewsEntity>() ;
+        /*PagerUtil<NewsEntity> pagerUtil = new  PagerUtil<NewsEntity>() ;
         int sa = queryNews().size();
         //System.out.println("总记录数"+sa);
 
@@ -28,16 +30,12 @@ public class NewsService {
         pagerUtil.setPageCount(pageCount) ;
 
         //3.设置当前页
-        if(currentPage>pagerUtil.getTotalPageCount()) {
-            pagerUtil.setCurrentPage(pagerUtil.getTotalPageCount()) ;
-        } else {
-            pagerUtil.setCurrentPage(currentPage) ;
-        }
+        pagerUtil.setCurrentPage(currentPage) ;*/
 
-        List<NewsEntity> list = newsDao.queryPageNews(currentPage,pageCount);
 
-        pagerUtil.setData(list) ;
-        return pagerUtil;
+        PagerUtil<NewsEntity> list = newsDao.queryPageNews(currentPage,pageCount);
+
+        return list;
     }
 
     //添加留言
